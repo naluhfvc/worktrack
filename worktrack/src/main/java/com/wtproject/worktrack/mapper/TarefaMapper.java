@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = FuncionarioMapper.class)
 public interface TarefaMapper {
 
-    @Mapping(target = "funcionario", ignore = true) // associaremos manualmente
+    @Mapping(target = "funcionario", ignore = true)
     Tarefa toEntity(TarefaCreateDTO dto);
 
     TarefaDTO toDTO(Tarefa tarefa);

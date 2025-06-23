@@ -7,7 +7,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Funcionario extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +24,11 @@ public class Funcionario extends BaseEntity {
 
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private List<Tarefa> tarefas;
+
+    public Funcionario(String nome, String cargo, String email, Setor setor) {
+        this.nome = nome;
+        this.cargo = cargo;
+        this.email = email;
+        this.setor = setor;
+    }
 }

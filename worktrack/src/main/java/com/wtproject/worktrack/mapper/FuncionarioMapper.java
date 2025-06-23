@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = SetorMapper.class)
 public interface FuncionarioMapper {
 
-    @Mapping(target = "setor", ignore = true) // vamos mapear setor manualmente para evitar loop
+    @Mapping(target = "setor", ignore = true)
     Funcionario toEntity(FuncionarioCreateDTO dto);
 
     FuncionarioDTO toDTO(Funcionario funcionario);

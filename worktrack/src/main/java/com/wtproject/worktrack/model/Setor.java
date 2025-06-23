@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Setor extends BaseEntity {
 
     @Id
@@ -19,4 +18,8 @@ public class Setor extends BaseEntity {
 
     @OneToMany(mappedBy = "setor", cascade = CascadeType.ALL)
     private List<Funcionario> funcionarios;
+
+    public Setor(String nome) {
+        this.nome = nome;
+    }
 }

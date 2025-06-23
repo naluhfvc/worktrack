@@ -6,7 +6,6 @@ import lombok.*;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Tarefa extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +21,11 @@ public class Tarefa extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
+
+    public Tarefa(String titulo, String descricao, Funcionario funcionario) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.status = StatusTarefa.PENDENTE;
+        this.funcionario = funcionario;
+    }
 }
