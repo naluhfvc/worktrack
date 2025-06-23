@@ -3,7 +3,7 @@
 API RESTful com Spring Boot para gerenciar **setores**, **funcionários** e **tarefas**, desenvolvida como trabalho da disciplina _Desenvolvimento Web em Camadas_ no curso de Sistemas de Informação – Unilasalle.
 
 ## 🚀 Tecnologias
-- Java 17 + Spring Boot  
+- Java 17 + Spring Boot + Maven
 - JPA (Hibernate) + PostgreSQL  
 - Lombok + MapStruct  
 - Swagger (SpringDoc OpenAPI)
@@ -38,16 +38,17 @@ cd worktrack
 
 ### 3. Configurar o Banco de Dados
 
-Crie um banco no PostgreSQL com o nome `worktrack`.  
+Crie um banco no PostgreSQL com o nome `worktrackdb`.  
 Depois, edite o arquivo `src/main/resources/application.properties` com suas credenciais:
 
 ```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/worktrack
-spring.datasource.username=seu_usuario
-spring.datasource.password=sua_senha
+spring.datasource.url=jdbc:postgresql://localhost:5432/worktrackdb
+spring.datasource.username=worktrackuser
+spring.datasource.password=1234
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-springdoc.swagger-ui.path=/swagger-ui.html
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 ```
 
 > 💡 Em ambiente de testes, você pode usar o banco H2 in-memory alterando o driver e a URL.
@@ -81,6 +82,8 @@ http://localhost:8080/swagger-ui.html
 ```
 
 ---
+
+As seeds são carregadas automaticamente no startup, apenas se não houver dados existentes.
 
 ✅ Pronto! A API está rodando localmente e pronta para ser usada.
 ## 👤 Autor
